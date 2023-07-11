@@ -1,3 +1,4 @@
+---
 - name: Download_helm_script
   vars_files: vars.yaml
   ansible.builtin.get_url:
@@ -17,11 +18,11 @@
     state: directory
     mode: '0755'
 
-- name: Mount_nfs
+- name: Mount an NFS volume
   ansible.posix.mount:
-    src: '{{ nfs.server }}:{{ nfs.path }}'
+    src: "{{ nfs.server }}:{{ nfs.path }}"
     path: /nfs-share
-    opts: default
+    opts: defaults
     state: mounted
     fstype: nfs
 

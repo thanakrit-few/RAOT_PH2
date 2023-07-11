@@ -1,0 +1,25 @@
+---
+- name: Initcluster
+  ansible.builtin.import_tasks: Initcluster.yaml
+
+- name: Join Master
+  ansible.builtin.import_tasks: joinnodemaster.yaml
+
+- name: Join Worker
+  ansible.builtin.import_tasks: joinnodeworker.yaml
+  delegate_to: jenkinstest
+
+- name: Set kube config
+  ansible.builtin.import_tasks: setkubeconfig.yaml
+
+- name: Install Isito
+  ansible.builtin.import_tasks: istio.yaml
+
+- name: Install helm
+  ansible.builtin.import_tasks: Installhelm.yaml
+
+- name: Install helm
+  ansible.builtin.import_tasks: Installmonitoring.yaml
+
+- name: InstallNFS.yaml
+  ansible.builtin.import_tasks: InstallNFS.yaml

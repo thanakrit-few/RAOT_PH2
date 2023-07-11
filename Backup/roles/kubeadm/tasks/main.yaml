@@ -1,8 +1,0 @@
-- name: Stop_service
-  ansible.builtin.import_tasks: stop_service.yaml
-
-- name: Install_kube
-  ansible.builtin.import_tasks: Install_kube.yaml
-
-- name: Init_kube
-  ansible.builtin.import_tasks: Init_kube.yaml

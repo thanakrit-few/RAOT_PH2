@@ -1,9 +1,0 @@
-kubectl patch -n monitoring deployments prometheus-kube-prometheus-operator -p '{"spec": {"template": {"spec": {"nodeSelector": {"node-role.kubernetes.io/infra-monitor": ""}}}}}'
-
-kubectl patch -n monitoring deployments prometheus-kube-prometheus-operator -p '{"spec": {"template": { "spec": {"tolerations": [{"effect":"NoSchedule","key":"node-role.kubernetes.io/infra-monitor","operator": "Exists"}]}}}}'
-
-kubectl patch -n monitoring deployments prometheus-grafana -p '{"spec": {"template": {"spec": {"nodeSelector": {"node-role.kubernetes.io/infra-monitor": ""}}}}}'
-
-# change to NodePort
-
-kubectl patch svc prometheus-grafana --type='json' -p '[{"op":"replace","path":"/spec/type","value":"NodePort"},{"op":"replace","path":"/spec/ports/0/nodePort","value":30030}]' -n monitoring

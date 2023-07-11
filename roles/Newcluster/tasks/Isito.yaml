@@ -104,7 +104,7 @@
                       maxUnavailable: 33%
                     type: RollingUpdate
 
-    dest: '{{ download_path }}/istio-operator.yaml'
+    dest: "{{ download_path }}/istio-operator.yaml"
     mode: '0644'
 
 - name: ApplyIstio

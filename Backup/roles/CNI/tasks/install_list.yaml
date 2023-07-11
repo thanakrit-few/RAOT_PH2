@@ -1,3 +1,0 @@
-- name: Download_CNI
-  ansible.builtin.command: kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
-  changed_when: true

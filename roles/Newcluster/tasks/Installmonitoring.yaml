@@ -8,9 +8,9 @@
 
 - name: Kube_check_ns
   ansible.builtin.shell: |
-    kubectl get namespace | grep monitoring
+    "kubectl get namespace | grep monitoring"
   register: ns
-
+  changed_when: true
 
 - name: Kube_ns_monitoring
   ansible.builtin.command: kubectl create ns monitoring

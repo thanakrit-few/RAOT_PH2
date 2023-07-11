@@ -35,3 +35,4 @@
     --set nfs.path={{ nfs.path }}/dev
     kubectl patch storageclass nfs-client -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
   changed_when: true
+# test git merge

@@ -1,0 +1,25 @@
+- name: Init_kube
+  ansible.builtin.command: kubeadm init --apiserver-advertise-address=192.168.20.211 --pod-network-cidr=10.244.0.0/16
+  changed_when: true
+  register: value
+
+- name: Display_log
+  ansible.builtin.debug:
+    var: value
+
+- name: Kube_starter
+  ansible.builtin.command: "{{ item }}"
+  with_items:
+    - mkdir -p {{ ansible_env.HOME }}/.kube
+    - sudo cp -i /etc/kubernetes/admin.conf {{ ansible_env.HOME }}/.kube/config
+    - sudo chown $(id -u):$(id -g) {{ ansible_env.HOME }}/.kube/config
+  changed_when: true
+  register: value2
+
+- name: Display_log2
+  ansible.builtin.debug:
+    var: value2
+
+- name: Kube_cni
+  ansible.builtin.command: kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
+  changed_when: true

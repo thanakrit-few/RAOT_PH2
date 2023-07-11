@@ -1,0 +1,10 @@
+- name: Init Kube
+  hosts: master
+  roles:
+  # - kubeadm
+  # - containerd
+  # - CNI
+  # - istio
+  # - helm
+  # - prometheus
+  - nfs

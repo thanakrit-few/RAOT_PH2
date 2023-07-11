@@ -1,0 +1,10 @@
+monitor:
+  key: node-role.kubernetes.io/master
+  operator: Exists
+  effect: NoSchedule
+  nodeSelector: master
+  label: infra-monitor
+
+
+svc_port:
+  grafana: 30030
